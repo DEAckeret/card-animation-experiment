@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" onmouseover="cardMouseOver(this)" onmouseout="cardMouseOut(this)">
+        <div class="card" id="card_one" onclick="cardOnClick(this)">
+            <img src="./images/img-1.JPG" alt="a very nice image">
+        </div>
+        <div class="card" id="card_two" onclick="cardOnClick(this)">
+            <img src="./images/img-2.JPG" alt="a very nice image">
+        </div>
+        <div class="card" id="card_three" onclick="cardOnClick(this)">
+            <img src="./images/img-3.JPG" alt="a very nice image">
+        </div>
+        <div class="card" id="card_four" onclick="cardOnClick(this)">
+            <img src="./images/img-4.JPG" alt="a very nice image">
+        </div>
+    </div>
+    
+    <script>
+        // function cardMouseOver(card) {
+        //     card.style.backgroundColor = "red";
+        //     card.style.rotate = "-5deg";
+        // }
+  
+        // function cardMouseOut(card) {
+        //     card.style.backgroundColor = "white";
+        //     card.style.rotate = "5deg";
+        // }
+
+        function cardMouseOver(container) {
+            var cards = container.children;
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.add('card-over');
+            }
+        }
+
+        function cardMouseOut(container) {
+            var cards = container.children;
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('card-over');
+            }
+        }
+
+        function cardOnClick(card) {
+            if (card.id === "card_click") {
+                // If the card has the temporary id, restore the original id
+                card.id = card.dataset.originalId;
+                card.dataset.originalId = "";
+            } else {
+                // If the card has its original id, store it and set the temporary id
+                card.dataset.originalId = card.id;
+                card.id = "card_click";
+            }
+        }
+    </script>
+
+</body>
+</html>
